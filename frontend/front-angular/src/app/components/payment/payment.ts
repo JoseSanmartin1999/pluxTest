@@ -22,11 +22,18 @@ export class Payment {
       expMonth: [''],
       expYear: [''],
       cvv: [''],
-      clientName: [''],
+      firstName: [''],
+      lastName: [''],
+      documentNumber: [''],
+      phone: [''],
       email: [''],
       amount: [''],
       installments: ['0'],
-      description: ['']
+      description: [''],
+      country: ['Ecuador'],
+      city: [''],
+      street: [''],
+      addressNumber: ['']
     });
   }
 
@@ -36,26 +43,33 @@ export class Payment {
     const body = {
       card: {
         number: String(form.cardNumber || '').replace(/\s/g, ''),
-        expirationMonth: String(form.expMonth || ''),
         expirationYear: String(form.expYear || ''),
+        expirationMonth: String(form.expMonth || ''),
         cvv: String(form.cvv || '')
       },
       buyer: {
-        name: String(form.clientName || ''),
+        documentNumber: String(form.documentNumber || ''),
+        firstName: String(form.firstName || ''),
+        lastName: String(form.lastName || ''),
+        phone: String(form.phone || ''),
         email: String(form.email || '')
       },
       currency: 'USD',
       baseAmount0: 0,
       baseAmount12: Number(form.amount || 0),
-      installments: Number(form.installments || 0),
-      interests: false,
+      installments: String(form.installments || '0'),
+      interests: String(form.interests ?? '0'),
+      gracePeriod: 0,
       description: String(form.description || ''),
+      shippingAddress: {
+        country: String(form.country || ''),
+        city: String(form.city || ''),
+        street: String(form.street || ''),
+        number: String(form.addressNumber || '')
+      },
       clientIp: '0.0.0.0',
-      idEstablecimiento: 'ID_ESTABLECIMIENTO',
-      urlRetorno3ds: 'https://urlServicioComercio.com/'
+      idEstablecimiento: 'MTAwOA=='
     };
-
-    console.log(body);
 
     this.paymentService.createPayment(body).subscribe({
       next: (response: any) => {

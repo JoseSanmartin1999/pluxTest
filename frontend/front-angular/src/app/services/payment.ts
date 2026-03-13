@@ -7,7 +7,7 @@ import { PaymentRequest } from '../interfaces/payment.interface';
   providedIn: 'root',
 })
 export class PaymentService {
-  private readonly apiUrl = 'http://localhost:3000/api/pagos';
+  private readonly apiUrl = 'http://localhost:3000/api/payments/charge';
 
   constructor(private http: HttpClient) {}
 

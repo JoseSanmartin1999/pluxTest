@@ -34,14 +34,53 @@
 
       <div>
         <label class="block text-sm font-medium">Nombre del cliente</label>
-        <input type="text" formControlName="clientName" class="w-full border rounded-lg p-2 mt-1"
-          placeholder="Juan Perez" />
+        <input type="text" formControlName="firstName" class="w-full border rounded-lg p-2 mt-1"
+          placeholder="Juan" />
+        <input type="text" formControlName="lastName" class="w-full border rounded-lg p-2 mt-1"
+          placeholder="Perez" />
       </div>
 
       <div>
         <label class="block text-sm font-medium">Email</label>
         <input type="email" formControlName="email" class="w-full border rounded-lg p-2 mt-1"
           placeholder="correo@email.com" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Número de documento</label>
+        <input type="text" formControlName="documentNumber" class="w-full border rounded-lg p-2 mt-1"
+          placeholder="1234567890" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Teléfono</label>
+        <input type="tel" formControlName="phone" class="w-full border rounded-lg p-2 mt-1"
+          placeholder="+593999999999" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">País</label>
+        <input type="text" formControlName="country" class="w-full border rounded-lg p-2 mt-1"
+          placeholder="Ecuador" />
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1/2">
+          <label class="block text-sm font-medium">Ciudad</label>
+          <input type="text" formControlName="city" class="w-full border rounded-lg p-2 mt-1"
+            placeholder="Ibarra" />
+        </div>
+        <div class="w-1/2">
+          <label class="block text-sm font-medium">Número</label>
+          <input type="text" formControlName="addressNumber" class="w-full border rounded-lg p-2 mt-1"
+            placeholder="2-80" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Calle</label>
+        <input type="text" formControlName="street" class="w-full border rounded-lg p-2 mt-1"
+          placeholder="Bolivar y Borrero" />
       </div>
 
       <div>
