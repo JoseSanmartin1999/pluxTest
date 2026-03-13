@@ -21,8 +21,8 @@ export const processPayment = async (req: Request, res: Response) => {
     // 2. Cifrado RSA [cite: 98, 152]
     const rsaSimetricKey = EncryptionService.encryptRSA(simetricKey, process.env.PLUX_PUBLIC_KEY!);
 
-    // 3. Credenciales Auth exactas [cite: 141, 152]
-    const plainAuth = `${process.env.PLUX_CLIENT_ID?.trim()}:${process.env.PLUX_SECRET_KEY?.trim()}`;
+    // 3. Credenciales Auth exactas usando nombres correctos de .env
+    const plainAuth = `${process.env.PLUX_ID_CLIENTE?.trim()}:${process.env.PLUX_CLAVE_SECRETA?.trim()}`;
     const authHeader = `Basic ${Buffer.from(plainAuth).toString('base64')}`;
 
     // 4. Construcción del cuerpo
@@ -49,7 +49,7 @@ export const processPayment = async (req: Request, res: Response) => {
     };
 
     const response = await axios.post(
-      `${process.env.PLUX_API_URL}credentials/paymentCardResource`, 
+      `${process.env.PLUX_BASE_URL}credentials/paymentCardResource`, 
       pluxPayload, 
       {
         headers: {

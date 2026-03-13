@@ -24,11 +24,15 @@ export class EncryptionService {
    * Cifrado RSA para la llave simétrica usando la llave pública de Plux [cite: 97, 100]
    */
   static encryptRSA(simetricKey: string, publicKey: string): string {
+    let key = publicKey;
+    if (key.indexOf('BEGIN PUBLIC KEY') < 0) {
+      key = `-----BEGIN PUBLIC KEY-----\n${publicKey}\n-----END PUBLIC KEY-----`;
+    }
     const buffer = Buffer.from(simetricKey);
     const encrypted = crypto.publicEncrypt(
       {
-        key: publicKey,
-        padding: crypto.constants.RSA_PKCS1_PADDING, // Requerido por Plux [cite: 113]
+        key: key,
+        padding: crypto.constants.RSA_PKCS1_PADDING,
       },
       buffer
     );
